@@ -81,7 +81,7 @@ type vipsWatermarkTextOptions struct {
 
 type vipsOptions struct {
 	PageNum C.int
-	Dpi     C.int
+	Dpi     C.double
 }
 
 func init() {
@@ -393,7 +393,7 @@ func vipsReadWithOptions(buf []byte, o Options) (*C.VipsImage, ImageType, error)
 	imageBuf := unsafe.Pointer(&buf[0])
 
 	// err := C.vips_init_image(imageBuf, length, C.int(imageType), &image)
-	opts := vipsOptions{PageNum: C.int(o.PageNum), Dpi: C.int(300)}
+	opts := vipsOptions{PageNum: C.int(o.PageNum), Dpi: C.double(300)}
 	err := C.vips_init_image(imageBuf, length, C.int(imageType), &image, (*C.Options)(unsafe.Pointer(&opts)))
 	if err != 0 {
 		return nil, UNKNOWN, catchVipsError()
