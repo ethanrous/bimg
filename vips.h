@@ -135,7 +135,7 @@ vips_shrink_bridge(VipsImage *in, VipsImage **out, double xshrink, double yshrin
 
 int
 vips_reduce_bridge(VipsImage *in, VipsImage **out, double xshrink, double yshrink, int kernel) {
-	return vips_reduce(in, out, xshrink, yshrink, "kernel", kernel);
+	return vips_reduce(in, out, xshrink, yshrink, "kernel", kernel, NULL);
 }
 
 int
